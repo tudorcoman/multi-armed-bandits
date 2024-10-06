@@ -1,0 +1,56 @@
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+spring:
+  profiles:
+    active: local
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+      file-size-threshold: 0
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/reporting
+    username: "db_user"
+    password: "db_pass"
+    hikari:
+      pool-name: connPool
+      maximum-pool-size: 10
+      idleTimeout: 30000
+      connectionTimeout: 1000
+      minimum-idle: 10
+      connectionTestQuery: "SELECT 1"
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      max_fetch_depth: 2
+      generate_statistics: false
+      show_sql: false
+      testOnBorrow: true
+      test-on-connect: true
+      test-while-idle: true
+      validationQuery: "SELECT 1"
+      connection:
+        provider_class: org.hibernate.hikaricp.internal.HikariCPConnectionProvider
+        autocommit: false
+        max_allowed_packet: 50MB
+        release_mode: after_transaction
+    properties:
+      jdbc:
+        time_zone: UTC
+
+logging:
+  level:
+    root: INFO
+
+management:
+  endpoints:
+    web:
+      base-path: /
+      path-mapping:
+        health: health

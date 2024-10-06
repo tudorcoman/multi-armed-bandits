@@ -1,0 +1,8 @@
+FROM postgres:14.8
+
+EXPOSE 5432
+
+ENV POSTGRES_PASSWORD "db_pass"
+ENV POSTGRES_USER "db_user"
+ENV POSTGRES_DB "reporting"
+

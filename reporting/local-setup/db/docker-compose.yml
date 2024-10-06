@@ -1,0 +1,14 @@
+version: '1'
+services:
+  postgres:
+    build: .
+    cap_add:
+      - SYS_PTRACE
+    environment:
+      - 'POSTGRES_PASSWORD=db_pass'
+      - 'POSTGRES_USER=db_user'
+      - 'POSTRES_DB=reporting'
+    hostname: 'adminhost'
+    ports:
+      - '5432:5432'
+
