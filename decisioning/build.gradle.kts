@@ -7,7 +7,7 @@ plugins {
     kotlin("plugin.spring") version "1.9.23"
 }
 
-group = "ro.unibuc.coman.licenta"
+group = "com.demo.bandits"
 version = "0.0.1-SNAPSHOT"
 
 java {
